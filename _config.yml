@@ -1,6 +1,6 @@
 title: Dickson Li
 url: "https://dicksonli.com"
-baseurl: ""
+baseurl: "/index"
 
 markdown: kramdown
 #ins_logo: "./bits-logo.png"
@@ -21,4 +21,6 @@ nav:
  - name: "Test"
    link: "resume.pdf"
  - name: "Contact"
+   link: "contact"
+ - name: "Projects"
    link: "contact"
