@@ -1,6 +1,6 @@
 title: Dickson Li
 url: "https://dicksonli.com"
-baseurl: "/index"
+baseurl: ""
 
 markdown: kramdown
 #ins_logo: "./bits-logo.png"
