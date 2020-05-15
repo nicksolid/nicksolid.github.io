@@ -1,6 +1,7 @@
+name: "Dickson Li"
 title: "Dickson Li"
 url: "https://dicksonli.com"
-baseurl: ""
+baseurl: "/index"
 
 markdown: kramdown
 #ins_logo: "./bits-logo.png"
@@ -9,18 +10,18 @@ tracking_id: #
 
 footer: yes
 footer_url: ""
-footer_text: "Adapted from Ankit Sultana"
+footer_text: "© 2020 All rights reserved."
 
 sass:
     style: compressed
     sass_dir: _sass
 
 nav:
- - name: "Hello"
-   link: "/researcher/"
- - name: "Test"
-   link: "resume.pdf"
+ - name: "About"
+   link: "index"
+ - name: "Posts"
+   link: "posts"
  - name: "Contact"
    link: "contact"
- - name: "Projects"
-   link: "contact"
+ - name: "Reading List"
+   link: "reading_list"
