@@ -1,6 +1,6 @@
 ---
 layout: default
-is_contact: true
+title: "Dickson Li | Reading List"
 ---
 
 ## Reading List
