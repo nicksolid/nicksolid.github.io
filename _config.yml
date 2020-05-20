@@ -25,3 +25,5 @@ nav:
    link: "contact"
  - name: "Reading List"
    link: "reading_list"
+ - name: "Quarantine recipes"
+   link: "quarantine_recipes"

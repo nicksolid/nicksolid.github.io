@@ -1,0 +1,31 @@
+I"Ÿ<h2 id="summary">Summary</h2>
+
+<p>I realized that the best recipes are those that are (a) easy, (b) have latitude for failure, (c) have ingredient generality. Nobody wants to buy specific ingredients for a specific dish that you will only cook once. Therefore:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Complexity</th>
+      <th>Ingredient Generality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Japchae</td>
+      <td>Korean</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>Ceviche</td>
+      <td>?</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>Kimbap</td>
+      <td>Korean</td>
+      <td>Low</td>
+    </tr>
+  </tbody>
+</table>
+:ET
