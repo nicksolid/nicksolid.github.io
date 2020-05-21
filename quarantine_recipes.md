@@ -18,7 +18,7 @@ Name | Cuisine Type | Complexity | Ingredient Generality |
 [Pad Krapow](#krapow) | Thai | Low | High
 [Spaghetti Bolognese](#bolognese) | American? Italian? | Low | High
 [Sukiyaki](#sukiyaki) | Japanese | Low | Medium
-[Gyu Don] (#gyudon) | Japanese | Low | High
+[Gyu Don](#gyudon) | Japanese | Low | High
 [Suki Nam / Suki Heng*](#suki) | Thai | High | Medium
 [Japchae](#japchae) | Korean | High | Medium
 [Sous Vide Steak & Mashed Potatoes](#steak) | Hmm... | Low | Low-Mid
@@ -61,6 +61,8 @@ Name | Cuisine Type | Complexity | Ingredient Generality |
 ## Kimbap {#kimbap}
 
 ![Kimbap Rolling](images/recipes/kimbap_rolling.jpg){:class="picture"}
+
+![Kimbap Rows](images/recipes/kbr.jpg){:class="picture"}
 
 
 ## Roast Pork Belly {#porkbelly}
