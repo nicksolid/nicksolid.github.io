@@ -8,7 +8,8 @@ title: "Dickson Li | Posts"
 <ul>
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+      <b><a href="{{ post.url }}">{{ post.title }}</a></b>
+      {{ post.excerpt }}
     </li>
   {% endfor %}
 </ul>

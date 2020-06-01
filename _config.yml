@@ -27,3 +27,5 @@ nav:
    link: "reading_list"
  - name: "Quarantine recipes"
    link: "quarantine_recipes"
+
+permalink: /:categories/:title/

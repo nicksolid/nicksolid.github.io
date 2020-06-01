@@ -36,35 +36,35 @@ Name | Cuisine Type | Complexity | Ingredient Generality |
 ## Gyu Don {#gyudon}
 ## Suki Nam / Suki Heng {#suki}
 
-![Suki](images/recipes/suki.jpg){:class="picture"}
+![Suki](/images/recipes/suki.jpg){:class="picture"}
 
 ## Japchae {#japchae}
 
-![japchae](images/recipes/japchae_kimbap.jpg){:class="picture"}
+![japchae](/images/recipes/japchae_kimbap.jpg){:class="picture"}
 
 ## Sous Vide Steak & Mashed Potatoes {#steak}
 
-![Steak Plated](images/recipes/steak_plated.jpg){:class="picture"}
+![Steak Plated](/images/recipes/steak_plated.jpg){:class="picture"}
 
-![Just Steak](images/recipes/just_steak.jpg){:class="picture"}
+![Just Steak](/images/recipes/just_steak.jpg){:class="picture"}
 
 ## Scallop Ceviche {#ceviche}
 
-![Scallop Ceviche](images/recipes/scallop_ceviche.jpg){:class="picture"}
+![Scallop Ceviche](/images/recipes/scallop_ceviche.jpg){:class="picture"}
 
-![Scallop Rice](images/recipes/scallop_rice_seaweed.jpg){:class="picture"}
+![Scallop Rice](/images/recipes/scallop_rice_seaweed.jpg){:class="picture"}
 
 ## Garlic Butter Mussels {#mussels}
 
-![Mussels](images/recipes/garlic_butter_mussels.jpg){:class="picture"}
+![Mussels](/images/recipes/garlic_butter_mussels.jpg){:class="picture"}
 
 ## Kimbap {#kimbap}
 
-![Kimbap Rolling](images/recipes/kimbap_rolling.jpg){:class="picture"}
+![Kimbap Rolling](/images/recipes/kimbap_rolling.jpg){:class="picture"}
 
-![Kimbap Rows](images/recipes/kbr.jpg){:class="picture"}
+![Kimbap Rows](/images/recipes/kbr.jpg){:class="picture"}
 
 
 ## Roast Pork Belly {#porkbelly}
 
-![Pork Belly](images/recipes/pork_belly.jpg){:class="picture"}
+![Pork Belly](/images/recipes/pork_belly.jpg){:class="picture"}
