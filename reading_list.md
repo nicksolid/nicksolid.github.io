@@ -9,6 +9,11 @@ title: "Dickson Li | Reading List"
 
 Category | Title | Author
 -|-|-
+Politics | The Room Where It Happened | John Bolton
+Nonfiction | Bad Blood | John Carreyrou
+Biography | Man's Search for Meaning | Viktor E. Frankl
+Literary Nonfiction | Trick Mirror | Jia Tolentino
+Literary Nonfiction | Uncanny Valley | Anna Wiener
 Politics| Why We Are Polarized | Ezra Klein 
 Grand Strategy | New Rules of War | Sean McFate 
 Public Policy | Jump-starting America | Simon Johnson 
