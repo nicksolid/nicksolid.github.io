@@ -134,5 +134,18 @@ hr {
 	}
 }
 
+/* Reading List */
+
+table.readlist th:first-of-type {
+    width: 20%;
+}
+table.readlist th:nth-of-type(2) {
+    width: 60%;
+}
+table.readlist th:nth-of-type(3) {
+    width: 20%;
+} 
+
+
 @import "typography";
 @import "tables";
