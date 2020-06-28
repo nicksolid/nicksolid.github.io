@@ -16,7 +16,7 @@ Biography | Man's Search for Meaning | Viktor E. Frankl
 Business | Loonshots: How to Nurture the Crazy Ideas That Win Wars, Cure Diseases, and Transform Industries | Safi Bahcall
 Business | The Ride of a Lifetime: Lessons Learned from 15 Years as CEO of the Walt Disney Company* | Robert Iger
 Grand Strategy | The New Rules of War: Victory in the Age of Durable Disorder | Sean McFate 
-Literary Nonfiction | Educated | Tara Westover
+Literary Nonfiction | Educated* | Tara Westover
 Literary Nonfiction | Trick Mirror: Reflections on Self-Delusion* | Jia Tolentino
 Literary Nonfiction | Uncanny Valley* | Anna Wiener
 Nonfiction | Bad Blood: Secrets and Lies in a Silicon Valley Startup* | John Carreyrou
