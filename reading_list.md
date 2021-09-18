@@ -5,7 +5,20 @@ title: "Dickson Li | Reading List"
 
 ## Reading List
 
-Books I could not put down are denoted with a *
+Books I particularly enjoyed are denoted with a *
+
+<h3>2021</h3>
+
+{: .table .readlist}
+Category | Title | Author 
+-|-|-
+Nonfiction | Think Again: The Power of Knowing What You Don't Know | Adam Grant
+Memoir | A Promised Land* | Barack Obama
+Business | An Ugly Truth: Inside Facebook's Battle for Domination* | Sheera Frenkel, Cecilia Kang
+Nonfiction | How Will You Measure Your Life? | Clayton Christenson
+Nonfiction | Designing Your Life | Bill Burnett & Dave Evanson
+Business | The First 90 Days | Michael Watkins
+
 
 <h3>2020</h3>
 
@@ -19,6 +32,7 @@ Grand Strategy | The New Rules of War: Victory in the Age of Durable Disorder | 
 Literary Nonfiction | Educated* | Tara Westover
 Literary Nonfiction | Trick Mirror: Reflections on Self-Delusion* | Jia Tolentino
 Literary Nonfiction | Uncanny Valley* | Anna Wiener
+Memoir | Shoe Dog | Phil Knight
 Nonfiction | Bad Blood: Secrets and Lies in a Silicon Valley Startup* | John Carreyrou
 Politics | Revolution Française: Emmanuel Macron and the Quest to Reinvent a Nation | Sophie Pedder 
 Politics | The Room Where It Happened | John Bolton
