@@ -227,47 +227,60 @@ table tr td {
 }
 
 /* ---------- Writing ---------- */
-.writing-list { list-style: none; padding: 0; }
-.writing-list li {
-    padding: 18px 0;
-    border-bottom: 1px solid #eee;
+.writing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.writing-list .post-meta {
-    margin-bottom: 6px;
+.post-card {
+    border-left: 4px solid #7f1d1d;   /* burgundy, matches Cloud Operator brand */
+    padding: 14px 0 18px 16px;
+    margin-bottom: 18px;
 }
-.writing-list .post-date {
-    color: #888;
+.post-card .post-meta {
     font-size: 0.82em;
+    color: #888;
+    margin-bottom: 8px;
 }
-.writing-list .post-title {
+.post-card .post-date {
+    color: #888;
+}
+.post-card .post-source {
+    color: #7f1d1d;
+    font-weight: 500;
+}
+.post-card .post-source-link {
+    color: #888;
+    border-bottom: 1px dotted #bbb;
+}
+.post-card .post-source-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    text-decoration: none;
+}
+.post-card .post-title {
     display: block;
-    font-weight: 600;
-    font-size: 1.05em;
+    font-weight: 700;
+    font-size: 1.18em;
     color: #1a1a1a;
-    line-height: 1.35;
-    margin-bottom: 6px;
+    line-height: 1.3;
+    margin-bottom: 4px;
 }
-.writing-list .post-title:hover {
+.post-card .post-title:hover {
     color: var(--accent);
     text-decoration: none;
 }
-.writing-list .post-excerpt {
-    margin: 0 0 8px 0;
-    color: #444;
-    font-size: 0.93em;
-    line-height: 1.55;
+.post-card .post-subtitle {
+    color: #555;
+    font-size: 0.98em;
+    line-height: 1.45;
+    margin-bottom: 10px;
 }
-.writing-list .post-readmore {
-    font-size: 0.85em;
-    color: var(--accent);
-}
-.writing-list .post-section {
-    display: inline-block;
-    font-size: 0.7em;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #999;
-    margin-left: 8px;
+.post-card .post-excerpt {
+    margin: 0;
+    color: #333;
+    font-size: 0.94em;
+    line-height: 1.6;
 }
 .subscribe-cta {
     background: #f8f8f8;

@@ -11,7 +11,7 @@
  *   2. Build the post list manually and update writing.html when you publish.
  */
 
-const EXCERPT_WORD_LIMIT = 60;   // ~3-4 sentences of body prose
+const EXCERPT_WORD_LIMIT = 150;  // ~6-8 sentences of body prose
 
 function loadSubstackFeed(opts) {
     const { substackUrl, mount, linkEl, limit } = opts;
@@ -55,22 +55,42 @@ function loadSubstackFeed(opts) {
 
 function renderItem(it) {
     const date = formatDate(it.pubDate);
-    const section = inferSection(it);
+    const subtitle = (it.description || "").trim();
     const excerpt = buildExcerpt(it);
 
-    return '<li>' +
+    return '<li class="post-card">' +
         '<div class="post-meta">' +
             '<span class="post-date">' + date + '</span>' +
-            (section ? '<span class="post-section">' + section + '</span>' : '') +
+            ' &middot; <span class="post-source">Cloud Operator</span>' +
+            ' &middot; <a class="post-source-link" href="' + it.link + '" target="_blank" rel="noopener">' +
+                'read on Substack &rarr;' +
+            '</a>' +
         '</div>' +
         '<a class="post-title" href="' + it.link + '" target="_blank" rel="noopener">' +
             escapeHtml(it.title) +
         '</a>' +
+        (subtitle ? '<div class="post-subtitle">' + escapeHtml(stripHtml(subtitle)) + '</div>' : '') +
         (excerpt ? '<p class="post-excerpt">' + excerpt + '</p>' : '') +
-        '<a class="post-readmore" href="' + it.link + '" target="_blank" rel="noopener">' +
-            'Read on Substack &rarr;' +
-        '</a>' +
     '</li>';
+}
+
+function stripHtml(s) {
+    return String(s)
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&rsquo;/g, "\u2019")
+        .replace(/&lsquo;/g, "\u2018")
+        .replace(/&rdquo;/g, "\u201d")
+        .replace(/&ldquo;/g, "\u201c")
+        .replace(/&mdash;/g, "\u2014")
+        .replace(/&ndash;/g, "\u2013")
+        .replace(/\s+/g, " ")
+        .trim();
 }
 
 /**
