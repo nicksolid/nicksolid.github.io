@@ -11,7 +11,7 @@
  *   2. Build the post list manually and update writing.html when you publish.
  */
 
-const EXCERPT_WORD_LIMIT = 45;   // ~3 short sentences
+const EXCERPT_WORD_LIMIT = 60;   // ~3-4 sentences of body prose
 
 function loadSubstackFeed(opts) {
     const { substackUrl, mount, linkEl, limit } = opts;
@@ -75,18 +75,33 @@ function renderItem(it) {
 
 /**
  * Substack RSS provides:
- *   - it.description: short summary / subtitle (often the one we want)
- *   - it.content:     full HTML body (fallback if description is empty)
- * We strip HTML, collapse whitespace, and trim to ~EXCERPT_WORD_LIMIT words.
+ *   - it.description: short summary, almost always just the post subtitle
+ *   - it.content:     full HTML body of the post
+ * The subtitle alone reads thin (it's the same idea as the title), so we
+ * prefer to pull the first ~EXCERPT_WORD_LIMIT words from the article body.
+ * We strip any leading subtitle/header that would otherwise duplicate the
+ * subtitle the reader has already seen.
  */
 function buildExcerpt(it) {
-    const raw = (it.description || it.content || "").trim();
+    const body = (it.content || "").trim();
+    const fallback = (it.description || "").trim();
+    const subtitle = fallback;       // Substack puts the subtitle in description
+    const raw = body || fallback;
     if (!raw) return "";
 
-    // Strip HTML tags and decode common entities.
+    // Strip script/style blocks, then strip remaining tags but keep their text.
     let text = raw
         .replace(/<style[\s\S]*?<\/style>/gi, "")
         .replace(/<script[\s\S]*?<\/script>/gi, "")
+        // Substack sometimes wraps the subtitle in an <h3> or <em> at the very
+        // top; remove the first heading element entirely so we don't repeat it.
+        .replace(/^\s*<(h[1-6]|p)[^>]*>[\s\S]*?<\/\1>\s*/i, function (match, tag) {
+            // Only strip the lead block if its plain-text matches the subtitle.
+            const plain = match.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+            const sub = subtitle.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+            if (sub && plain && plain.indexOf(sub.slice(0, 30)) === 0) return "";
+            return match;
+        })
         .replace(/<[^>]+>/g, " ")
         .replace(/&nbsp;/g, " ")
         .replace(/&amp;/g, "&")
@@ -102,6 +117,10 @@ function buildExcerpt(it) {
         .replace(/&ndash;/g, "\u2013")
         .replace(/\s+/g, " ")
         .trim();
+
+    // If the body was empty or stripping went wrong, fall back to the subtitle.
+    if (!text) text = subtitle;
+    if (!text) return "";
 
     const words = text.split(" ");
     if (words.length <= EXCERPT_WORD_LIMIT) return escapeHtml(text);
