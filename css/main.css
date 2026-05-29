@@ -354,14 +354,21 @@ table tr td {
     #navlist {
         padding: 10px 0 10px 0;
         margin: 0;
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 14px;
         float: none;
-        text-align: center;
         width: 100%;
+        list-style: none;
     }
-    #navlist li.alignable { display: inline-block; }
-    #navlist li.pull-left { float: none; }
-    #navlist li.nav-list { margin: 0; }
+    #navlist li.alignable,
+    #navlist li.pull-left,
+    #navlist li.nav-list {
+        display: inline-block;
+        float: none;
+        margin: 0;
+    }
 }
 
 
