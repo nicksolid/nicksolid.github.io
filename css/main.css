@@ -229,16 +229,37 @@ table tr td {
 /* ---------- Writing ---------- */
 .writing-list { list-style: none; padding: 0; }
 .writing-list li {
-    padding: 14px 0;
+    padding: 18px 0;
     border-bottom: 1px solid #eee;
+}
+.writing-list .post-meta {
+    margin-bottom: 6px;
 }
 .writing-list .post-date {
     color: #888;
-    font-size: 0.85em;
-    margin-right: 8px;
+    font-size: 0.82em;
 }
 .writing-list .post-title {
-    font-weight: 500;
+    display: block;
+    font-weight: 600;
+    font-size: 1.05em;
+    color: #1a1a1a;
+    line-height: 1.35;
+    margin-bottom: 6px;
+}
+.writing-list .post-title:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+.writing-list .post-excerpt {
+    margin: 0 0 8px 0;
+    color: #444;
+    font-size: 0.93em;
+    line-height: 1.55;
+}
+.writing-list .post-readmore {
+    font-size: 0.85em;
+    color: var(--accent);
 }
 .writing-list .post-section {
     display: inline-block;
