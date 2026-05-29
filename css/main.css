@@ -277,10 +277,25 @@ table tr td {
     margin-bottom: 10px;
 }
 .post-card .post-excerpt {
-    margin: 0;
     color: #333;
     font-size: 0.94em;
     line-height: 1.6;
+}
+.post-card .post-excerpt p {
+    margin: 0 0 0.85em 0;
+}
+.post-card .post-excerpt p:last-child {
+    margin-bottom: 0;
+}
+.post-card .post-excerpt .excerpt-heading {
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    font-size: 0.95em;
+}
+.post-card .post-excerpt .excerpt-heading:first-child {
+    margin-top: 0;
 }
 .subscribe-cta {
     background: #f8f8f8;

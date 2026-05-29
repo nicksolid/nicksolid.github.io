@@ -56,7 +56,7 @@ function loadSubstackFeed(opts) {
 function renderItem(it) {
     const date = formatDate(it.pubDate);
     const subtitle = (it.description || "").trim();
-    const excerpt = buildExcerpt(it);
+    const excerptHtml = buildExcerpt(it, subtitle);
 
     return '<li class="post-card">' +
         '<div class="post-meta">' +
@@ -70,7 +70,7 @@ function renderItem(it) {
             escapeHtml(it.title) +
         '</a>' +
         (subtitle ? '<div class="post-subtitle">' + escapeHtml(stripHtml(subtitle)) + '</div>' : '') +
-        (excerpt ? '<p class="post-excerpt">' + excerpt + '</p>' : '') +
+        (excerptHtml ? '<div class="post-excerpt">' + excerptHtml + '</div>' : '') +
     '</li>';
 }
 
@@ -98,53 +98,81 @@ function stripHtml(s) {
  *   - it.description: short summary, almost always just the post subtitle
  *   - it.content:     full HTML body of the post
  * The subtitle alone reads thin (it's the same idea as the title), so we
- * prefer to pull the first ~EXCERPT_WORD_LIMIT words from the article body.
- * We strip any leading subtitle/header that would otherwise duplicate the
- * subtitle the reader has already seen.
+ * walk the article body and pull out paragraphs and section headings up to
+ * EXCERPT_WORD_LIMIT total words, preserving block structure as <p> tags
+ * and <p class="excerpt-h"> for section headings (Situation, Complication, etc).
  */
-function buildExcerpt(it) {
+function buildExcerpt(it, subtitle) {
     const body = (it.content || "").trim();
-    const fallback = (it.description || "").trim();
-    const subtitle = fallback;       // Substack puts the subtitle in description
-    const raw = body || fallback;
-    if (!raw) return "";
+    if (!body) {
+        // Last-resort fallback: just use the subtitle if we have nothing else
+        return subtitle ? "<p>" + escapeHtml(stripHtml(subtitle)) + "</p>" : "";
+    }
 
-    // Strip script/style blocks, then strip remaining tags but keep their text.
-    let text = raw
+    const blocks = extractBlocks(body);
+    if (blocks.length === 0) return "";
+
+    // Drop a leading block that just repeats the subtitle (Substack sometimes
+    // wraps the subtitle as the first <p> or <h3>).
+    const sub = subtitle ? stripHtml(subtitle).slice(0, 30) : "";
+    if (sub && blocks[0] && blocks[0].text.indexOf(sub) === 0) {
+        blocks.shift();
+    }
+
+    // Walk blocks until we hit the word budget.
+    let wordsUsed = 0;
+    const out = [];
+    for (let i = 0; i < blocks.length; i++) {
+        const b = blocks[i];
+        const remaining = EXCERPT_WORD_LIMIT - wordsUsed;
+        if (remaining <= 0) break;
+
+        const words = b.text.split(/\s+/);
+        if (words.length <= remaining) {
+            out.push(b);
+            wordsUsed += words.length;
+        } else {
+            // Truncate this block to the remaining word budget.
+            out.push({
+                type: b.type,
+                text: words.slice(0, remaining).join(" ") + "\u2026",
+            });
+            wordsUsed = EXCERPT_WORD_LIMIT;
+            break;
+        }
+    }
+
+    return out.map(function (b) {
+        if (b.type === "heading") {
+            return '<p class="excerpt-heading">' + escapeHtml(b.text) + "</p>";
+        }
+        return "<p>" + escapeHtml(b.text) + "</p>";
+    }).join("");
+}
+
+/**
+ * Walk an HTML string and extract its block-level elements in order.
+ * Returns an array of { type: "para" | "heading", text: "..." }.
+ * Anything that isn't <p> or <h1>-<h6> at the top level is ignored.
+ */
+function extractBlocks(html) {
+    const cleaned = html
         .replace(/<style[\s\S]*?<\/style>/gi, "")
-        .replace(/<script[\s\S]*?<\/script>/gi, "")
-        // Substack sometimes wraps the subtitle in an <h3> or <em> at the very
-        // top; remove the first heading element entirely so we don't repeat it.
-        .replace(/^\s*<(h[1-6]|p)[^>]*>[\s\S]*?<\/\1>\s*/i, function (match, tag) {
-            // Only strip the lead block if its plain-text matches the subtitle.
-            const plain = match.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-            const sub = subtitle.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-            if (sub && plain && plain.indexOf(sub.slice(0, 30)) === 0) return "";
-            return match;
-        })
-        .replace(/<[^>]+>/g, " ")
-        .replace(/&nbsp;/g, " ")
-        .replace(/&amp;/g, "&")
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .replace(/&rsquo;/g, "\u2019")
-        .replace(/&lsquo;/g, "\u2018")
-        .replace(/&rdquo;/g, "\u201d")
-        .replace(/&ldquo;/g, "\u201c")
-        .replace(/&mdash;/g, "\u2014")
-        .replace(/&ndash;/g, "\u2013")
-        .replace(/\s+/g, " ")
-        .trim();
+        .replace(/<script[\s\S]*?<\/script>/gi, "");
 
-    // If the body was empty or stripping went wrong, fall back to the subtitle.
-    if (!text) text = subtitle;
-    if (!text) return "";
-
-    const words = text.split(" ");
-    if (words.length <= EXCERPT_WORD_LIMIT) return escapeHtml(text);
-    return escapeHtml(words.slice(0, EXCERPT_WORD_LIMIT).join(" ")) + "\u2026";
+    const blocks = [];
+    const re = /<(p|h[1-6])[^>]*>([\s\S]*?)<\/\1>/gi;
+    let m;
+    while ((m = re.exec(cleaned)) !== null) {
+        const tag  = m[1].toLowerCase();
+        const text = stripHtml(m[2]);
+        if (!text) continue;
+        blocks.push({
+            type: tag.charAt(0) === "h" ? "heading" : "para",
+            text: text,
+        });
+    }
+    return blocks;
 }
 
 function formatDate(iso) {
