@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Writing &middot; Dickson Li</title>
+    <meta name="description" content="Cloud Operator and other writing by Dickson Li.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="navbar container" id="nav-mount"></div>
+        <div style="clear:both"></div>
+        <hr>
+        <div class="container content">
+
+            <h2>Writing</h2>
+
+            <p>
+                I publish on Substack at
+                <a href="https://cloudoperator.substack.com" target="_blank" rel="noopener">Cloud Operator</a>
+                &ndash; an operator&rsquo;s view of Cloud and AI in Asia Pacific. Biweekly. Public sources only.
+            </p>
+
+            <!-- Substack subscribe form (iframe embed). -->
+            <div class="subscribe-cta">
+                <iframe src="https://cloudoperator.substack.com/embed"
+                        width="100%" height="320"
+                        style="border: 1px solid #eee; background: white; display: block; max-width: 480px; margin: 0 auto;"
+                        frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <h3>Latest Posts</h3>
+            <p style="font-size: 0.9em; color: #888;">
+                Pulled live from the Cloud Operator feed.
+            </p>
+
+            <ul class="writing-list" id="posts-mount">
+                <li>Loading latest posts&hellip;</li>
+            </ul>
+
+            <p style="text-align: center; margin-top: 30px;">
+                <a id="substack-link" href="https://cloudoperator.substack.com" target="_blank" rel="noopener">View all posts &rarr;</a>
+            </p>
+
+            <div id="footer-mount"></div>
+        </div>
+    </div>
+    <script src="js/site.js"></script>
+    <script src="js/writing.js"></script>
+    <script>
+        renderChrome("writing");
+        loadSubstackFeed({
+            substackUrl: "https://cloudoperator.substack.com",
+            mount:   document.getElementById("posts-mount"),
+            linkEl:  document.getElementById("substack-link"),
+            limit:   5
+        });
+    </script>
+</body>
+</html>

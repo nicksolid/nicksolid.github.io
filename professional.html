@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Professional · Dickson Li</title>
+    <meta name="description" content="Dickson Li's professional journey: Kearney, Bain, Google, AWS.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="navbar container" id="nav-mount"></div>
+        <div style="clear:both"></div>
+        <hr>
+        <div class="container content">
+
+            <h2>Professional Journey</h2>
+
+            <p>
+                <a href="https://www.linkedin.com/in/dickson-li/" target="_blank" rel="noopener">LinkedIn</a>
+            </p>
+
+            <p class="gantt-legend">
+                A quick tour through where I've worked and what I did there.
+                Click any bar or company to read more.
+            </p>
+
+            <div id="geo-legend"></div>
+
+            <!--
+                The Gantt is rendered from the ROLES array in js/professional.js.
+                Edit that file to change roles, dates, geography, or write-ups.
+            -->
+            <div id="gantt-mount"></div>
+
+            <div id="footer-mount"></div>
+        </div>
+    </div>
+    <script src="js/site.js"></script>
+    <script src="js/professional.js"></script>
+    <script>
+        renderChrome("professional");
+        renderGantt(document.getElementById("gantt-mount"));
+    </script>
+</body>
+</html>

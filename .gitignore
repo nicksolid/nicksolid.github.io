@@ -1,6 +1,15 @@
-_site
-.sass-cache
-.sass-cache/
+# Brand assets and mockups — local-only working folder.
+# The exported PNGs are uploaded directly to Substack rather than served
+# from the website, and the mockup pages are scratch comparison pages.
+brand/
+
+# Python font cache from the brand export script.
+_fonts_cache/
+
+# OS / editor cruft
 .DS_Store
-.jekyll-cache
-.jekyll-cache/
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/

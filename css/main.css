@@ -1,0 +1,409 @@
+/*
+ * dicksonli.com — main stylesheet
+ * Ported from the original Jekyll _sass/ files to plain CSS.
+ * Customise these two things and most of the look follows:
+ */
+:root {
+    --accent: #0099ff;
+    --max-width: 700px;
+    --med-width: 600px;
+    --small-width: 480px;
+    --image-size: 180px;
+}
+
+/* Basic */
+html { height: 100%; margin: 0; padding: 0; }
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 100%;
+    font-size: 90%;
+    line-height: 150%;
+    color: #222;
+}
+a { text-decoration: none; color: var(--accent); }
+a:hover { text-decoration: underline; }
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Layout */
+.container {
+    max-width: var(--max-width);
+    margin: auto;
+}
+.wrapper { min-height: 100%; }
+
+/* Navbar */
+#author-name {
+    font-size: 30px;
+    color: #272727;
+    display: inline-block;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+#author-name:hover { text-decoration: none; }
+.navbar {
+    padding: 50px 0 50px 0;
+    text-transform: capitalize;
+    font-variant: small-caps;
+}
+.navbar-ul {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 0 5px 0;
+    margin-left: 20px;
+    list-style: none;
+}
+.nav-list {
+    list-style-type: none;
+    margin: 0 5px 0 10px;
+}
+.nav-list.active a { color: #272727; font-weight: bold; }
+.alignable { display: inline-block; }
+.pull-left  { display: inline-block; float: left; }
+.pull-right { display: inline-block; float: right; }
+
+/* Content typography */
+.content a:hover { text-decoration: underline; }
+.content ol { counter-reset: list; padding: 0 30px 0 30px; }
+.content ol > li {
+    list-style-position: none;
+    position: relative;
+    list-style: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.content ol > li:before {
+    content: "[" counter(list, decimal) "] ";
+    counter-increment: list;
+    position: absolute;
+    left: -30px;
+}
+.content ul { padding: 0 20px 0 20px; }
+.content ul > li { margin: 5px 0 5px 0; }
+.content blockquote {
+    border-left: 5px solid #333333;
+    margin: 20px 0 20px 0;
+    padding: 2px 8px 2px 8px;
+    font-style: italic;
+}
+.content .profile-picture {
+    height: var(--image-size);
+    width: var(--image-size);
+    position: relative;
+    margin: -10px 0 0 15px;
+    float: right;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.content img { text-align: center; max-width: 100%; }
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.site-footer a { color: #555; }
+
+/* Tables */
+table {
+    margin: 15px 0;
+    border-collapse: collapse;
+    width: 100%;
+    padding: 0;
+}
+table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+}
+table tr:nth-child(2n) { background-color: #f8f8f8; }
+table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    text-align: left;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #cccccc;
+    text-align: left;
+    padding: 6px 13px;
+}
+
+/* ---------- Professional / Gantt ---------- */
+.gantt-legend {
+    font-size: 0.85em;
+    color: #555;
+    margin-bottom: 10px;
+}
+.gantt {
+    display: grid;
+    /* 1 column for the company label, then one column per year (set inline). */
+    gap: 4px 2px;
+    margin: 20px 0 30px 0;
+    font-size: 0.85em;
+}
+.gantt .gantt-header,
+.gantt .gantt-row {
+    display: contents;
+}
+.gantt .gantt-year {
+    text-align: center;
+    color: #888;
+    font-size: 0.8em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+}
+.gantt .gantt-label {
+    grid-column: 1 / 2;
+    padding-right: 12px;
+    white-space: nowrap;
+}
+.gantt .gantt-label a {
+    color: #272727;
+}
+.gantt .gantt-bar {
+    background: var(--accent);
+    height: 18px;
+    border-radius: 3px;
+    color: white;
+    font-size: 0.8em;
+    line-height: 18px;
+    padding: 0 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.gantt .gantt-bar:hover { opacity: 0.85; }
+.gantt-detail {
+    border-left: 3px solid var(--accent);
+    padding: 8px 14px;
+    margin: 6px 0 18px 0;
+    background: #fafafa;
+}
+.gantt-detail h4 {
+    margin: 0 0 2px 0;
+    font-size: 1em;
+}
+.gantt-detail .role-line {
+    font-size: 0.9em;
+    color: #444;
+    margin-bottom: 4px;
+}
+.gantt-detail .meta {
+    color: #777;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+}
+.gantt-detail p { margin: 6px 0; }
+
+/* Flash + ring when a detail card is targeted from the chart. */
+.gantt-detail.highlight {
+    animation: detail-flash 1.6s ease-out;
+}
+@keyframes detail-flash {
+    0%   { background: #fff5e6; box-shadow: 0 0 0 2px rgba(232,100,42,0.35); }
+    100% { background: #fafafa; box-shadow: none; }
+}
+
+/* Geography legend above the chart. */
+.geo-legend {
+    margin: 6px 0 4px 0;
+    font-size: 0.82em;
+    color: #666;
+}
+.geo-legend .swatch { margin-right: 16px; white-space: nowrap; }
+.geo-legend .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* ---------- Writing ---------- */
+.writing-list { list-style: none; padding: 0; }
+.writing-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+.writing-list .post-date {
+    color: #888;
+    font-size: 0.85em;
+    margin-right: 8px;
+}
+.writing-list .post-title {
+    font-weight: 500;
+}
+.writing-list .post-section {
+    display: inline-block;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #999;
+    margin-left: 8px;
+}
+.subscribe-cta {
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    text-align: center;
+}
+
+/* ---------- Projects ---------- */
+.project-list {
+    list-style: none;
+    padding: 0;
+}
+.project-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+}
+.project-name {
+    font-weight: bold;
+    color: #272727;
+    margin-right: 8px;
+}
+.project-status {
+    display: inline-block;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #e8f4ff;
+    color: var(--accent);
+    vertical-align: middle;
+}
+.project-status.idea  { background: #f0f0f0; color: #666; }
+.project-status.shipped { background: #e6f7e8; color: #2a8a35; }
+.project-tech {
+    color: #888;
+    font-size: 0.85em;
+    margin-top: 4px;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+    .container { max-width: var(--med-width); transition: 0.3s ease all; }
+}
+@media (max-width: 650px) {
+    .container { max-width: 83%; }
+    .navbar-ul { margin-top: 5px; }
+    .gantt { font-size: 0.75em; }
+}
+@media (max-width: 500px) {
+    .navbar { text-align: center; padding: 50px 0 0 0; }
+    #author-name { width: 100%; float: none; }
+    #navlist {
+        padding: 10px 0 10px 0;
+        margin: 0;
+        display: block;
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+    #navlist li.alignable { display: inline-block; }
+    #navlist li.pull-left { float: none; }
+    #navlist li.nav-list { margin: 0; }
+}
+
+
+/* ---------- Takeaways page ---------- */
+
+.page-intro {
+    color: #555;
+    font-style: italic;
+    margin-bottom: 4px;
+}
+.star-inline { color: #f5a623; font-style: normal; }
+
+/* Filter bar */
+.media-filters {
+    margin: 20px 0 18px 0;
+    font-size: 0.85em;
+}
+.media-filter-btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px 6px 2px 0;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    background: white;
+    color: #555;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+.media-filter-btn:hover { border-color: #999; }
+.media-filter-btn.active {
+    color: white;
+    border-color: transparent;
+    /* active background colour is set inline per-type by JS */
+}
+
+/* Entry card (variant D, WIRTW-lite layout) */
+.media-list { list-style: none; padding: 0; margin: 0; }
+.media-entry {
+    border-left: 4px solid #ccc;   /* colour set inline per-type by JS */
+    padding: 12px 0 18px 16px;
+    margin-bottom: 14px;
+}
+.media-entry .entry-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+.media-entry .type-pill {
+    display: inline-block;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid #ddd;        /* colour set inline per-type by JS */
+    border-radius: 3px;
+    padding: 1px 7px;
+    flex-shrink: 0;
+}
+.media-entry .title {
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 1.05em;
+}
+.media-entry .title a {
+    color: #1a1a1a;
+}
+.media-entry .title a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+.media-entry .star { color: #f5a623; }
+.media-entry .entry-source {
+    font-size: 0.82em;
+    color: #888;
+    margin-bottom: 8px;
+}
+.media-entry .entry-source a {
+    color: #888;
+    border-bottom: 1px dotted #bbb;
+}
+.media-entry .entry-source a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    text-decoration: none;
+}
+.media-entry p {
+    margin: 0 0 8px 0;
+    color: #333;
+    font-size: 0.94em;
+    line-height: 1.55;
+}
+.media-entry p:last-child { margin-bottom: 0; }

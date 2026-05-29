@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects · Dickson Li</title>
+    <meta name="description" content="Side projects by Dickson Li.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="navbar container" id="nav-mount"></div>
+        <div style="clear:both"></div>
+        <hr>
+        <div class="container content">
+
+            <h2>Projects</h2>
+
+            <p>
+                Things I build on the side &ndash; usually to scratch a personal itch
+                or learn a new tool by shipping something real.
+            </p>
+
+            <ul class="project-list">
+
+                <li>
+                    <span class="project-name">Thai by Chom &ndash; Daily Flashcard Mailer</span>
+                    <span class="project-status shipped">Shipped</span>
+                    <p>
+                        I take Thai class twice a week and kept forgetting vocab between
+                        sessions. Built a daily email that lands in my inbox at 7am with
+                        6 vocab cards, 1 grammar pattern, and 1 useful phrase &ndash; weighted
+                        toward newer lessons. Running in production since 2026.
+                    </p>
+                    <p class="project-tech">AWS Lambda · S3 · EventBridge · Python · Gmail SMTP</p>
+                </li>
+
+                <li>
+                    <span class="project-name">The Cloud Operator</span>
+                    <span class="project-status">Building</span>
+                    <p>
+                        Newsletter on cloud commercial mechanics &ndash; deal structures,
+                        funding programs, the operator's view of how cloud actually
+                        gets sold.
+                        <a href="writing.html">Read &rarr;</a>
+                    </p>
+                    <p class="project-tech">Substack</p>
+                </li>
+
+                <!--
+                    Add new projects above this line. Pattern:
+                    <li>
+                        <span class="project-name">NAME</span>
+                        <span class="project-status idea|building|shipped">Idea | Building | Shipped</span>
+                        <p>One paragraph: what it does and why it exists.</p>
+                        <p class="project-tech">Tech · stack · here</p>
+                    </li>
+                -->
+
+            </ul>
+
+            <div id="footer-mount"></div>
+        </div>
+    </div>
+    <script src="js/site.js"></script>
+    <script>renderChrome("projects");</script>
+</body>
+</html>

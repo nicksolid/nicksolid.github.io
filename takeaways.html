@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Takeaways · Dickson Li</title>
+    <meta name="description" content="Notes on books, podcasts, and articles worth flagging.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="navbar container" id="nav-mount"></div>
+        <div style="clear:both"></div>
+        <hr>
+        <div class="container content">
+
+            <h2>Takeaways</h2>
+
+            <p class="page-intro">
+                Notes on books, podcasts, and articles worth flagging &ndash;
+                what stuck, in my own words.
+            </p>
+
+            <!-- Filter buttons render here, colour-coded by type. -->
+            <div class="media-filters" id="media-filters"></div>
+
+            <!-- Entries render here from the ENTRIES array in js/takeaways.js. -->
+            <ul class="media-list" id="media-list"></ul>
+
+            <div id="footer-mount"></div>
+        </div>
+    </div>
+
+    <!--
+    ============================================================
+    HOW TO ADD AN ENTRY
+    ============================================================
+    Everything lives in js/takeaways.js. Add an object to the
+    ENTRIES array at the top of that file:
+
+        {
+            type:      "book",          // book | podcast | reading | show | tweet
+            date:      "2026-05-26",    // when YOU consumed it (sorts the list)
+            published: "2026-05-26",    // when the SOURCE came out (shown to readers)
+            title:     "Headline",
+            source:    "Author / show / publisher",
+            url:       "https://...",   // optional: adds "read \u2192" / "listen \u2192"
+            take:      "Paragraph."     // string, or array of strings for >1 paragraph
+        }
+
+    Inline italics: wrap a phrase in *asterisks* in any take string.
+
+    Phone edit:
+      github.com -> repo -> js/takeaways.js -> pencil -> edit -> commit.
+    ============================================================
+    -->
+
+    <script src="js/site.js"></script>
+    <script src="js/takeaways.js"></script>
+    <script>
+        renderChrome("takeaways");
+        renderTakeaways();
+    </script>
+</body>
+</html>
