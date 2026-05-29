@@ -156,12 +156,20 @@ function buildExcerpt(it, subtitle) {
  * Anything that isn't <p> or <h1>-<h6> at the top level is ignored.
  */
 function extractBlocks(html) {
+    // Strip Substack's cover-image figure/picture blocks at the top of the post.
+    // These contain attributes like `srcset="..."` that confuse a naive
+    // <p>...</p> regex (it can match an attribute value across element boundaries).
     const cleaned = html
         .replace(/<style[\s\S]*?<\/style>/gi, "")
-        .replace(/<script[\s\S]*?<\/script>/gi, "");
+        .replace(/<script[\s\S]*?<\/script>/gi, "")
+        .replace(/<figure[\s\S]*?<\/figure>/gi, "")
+        .replace(/<picture[\s\S]*?<\/picture>/gi, "")
+        .replace(/<div[^>]*captioned-image-container[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/a>\s*<\/figure>\s*<\/div>/gi, "")
+        // Remove any remaining standalone img / source / source-set tags
+        .replace(/<(img|source)\b[^>]*\/?>(?:\s*<\/\1>)?/gi, "");
 
     const blocks = [];
-    const re = /<(p|h[1-6])[^>]*>([\s\S]*?)<\/\1>/gi;
+    const re = /<(p|h[1-6])\b[^>]*>([\s\S]*?)<\/\1>/gi;
     let m;
     while ((m = re.exec(cleaned)) !== null) {
         const tag  = m[1].toLowerCase();
